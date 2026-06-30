@@ -1,0 +1,36 @@
+const images = {
+  'artes.png': require('../../assets/artes.png'),
+  'avatar-padrao.png': require('../../assets/avatar-padrao.png'),
+  'biologia.png': require('../../assets/biologia.png'),
+  'cabeca-header.png': require('../../assets/cabeca-header.png'),
+  'cabeca.png': require('../../assets/cabeca.png'),
+  'coala-magro.png': require('../../assets/coala-magro.png'),
+  'coala.png': require('../../assets/coala.png'),
+  'espanhol.png': require('../../assets/espanhol.png'),
+  'facebook.webp': require('../../assets/facebook.webp'),
+  'filosofia.png': require('../../assets/filosofia.png'),
+  'fisica.png': require('../../assets/fisica.png'),
+  'fisicaGeografiaFilosofia.png': require('../../assets/fisicaGeografiaFilosofia.png'),
+  'geografia.png': require('../../assets/geografia.png'),
+  'github.png': require('../../assets/github.png'),
+  'historia.png': require('../../assets/historia.png'),
+  'ingles.png': require('../../assets/ingles.png'),
+  'instagram.png': require('../../assets/instagram.png'),
+  'logo-completa.png': require('../../assets/logo-completa.png'),
+  'matematica.png': require('../../assets/matematica.png'),
+  'meninoFundologin.png': require('../../assets/meninoFundologin.png'),
+  'objetivos.webp': require('../../assets/objetivos.webp'),
+  'pont-raiva.png': require('../../assets/pont-raiva.png'),
+  'pontAtrasado.png': require('../../assets/pontAtrasado.png'),
+  'pontCaipira.png': require('../../assets/pontCaipira.png'),
+  'pontCalendario.png': require('../../assets/pontCalendario.png'),
+  'pontDeFrente.png': require('../../assets/pontDeFrente.png'),
+  'pontRomantico.png': require('../../assets/pontRomantico.png'),
+  'portugues.png': require('../../assets/portugues.png'),
+  'quimica.png': require('../../assets/quimica.png'),
+  'sociologia.png': require('../../assets/sociologia.png'),
+};
+
+export default images;
+
+export const getImage = (name) => images[name] || images['logo-completa.png'];
