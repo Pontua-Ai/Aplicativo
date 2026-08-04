@@ -83,7 +83,7 @@ export default function CadastroScreen({ navigation }) {
           <View style={styles.inputGroup}>
             <Text style={[styles.label, { color: colors.textPrimary }]}>Nome de usuário</Text>
             <TextInput
-              style={[styles.input, { backgroundColor: colors.input, borderColor: colors.borderColor }]}
+              style={[styles.input, { backgroundColor: colors.input, color: colors.textPrimary, borderColor: colors.borderColor }]}
               placeholder="Como podemos te chamar?"
               placeholderTextColor={colors.placeholder}
               value={username}
@@ -94,7 +94,7 @@ export default function CadastroScreen({ navigation }) {
           <View style={styles.inputGroup}>
             <Text style={[styles.label, { color: colors.textPrimary }]}>E-mail institucional</Text>
             <TextInput
-              style={[styles.input, { backgroundColor: colors.input, borderColor: colors.borderColor }]}
+              style={[styles.input, { backgroundColor: colors.input, color: colors.textPrimary, borderColor: colors.borderColor }]}
               placeholder="Digite seu e-mail institucional"
               placeholderTextColor={colors.placeholder}
               value={email}
