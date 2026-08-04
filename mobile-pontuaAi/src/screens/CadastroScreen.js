@@ -6,6 +6,10 @@ import {
 import { useTheme } from '../contexts/ThemeContext';
 import { signup, validarSenha } from '../services/auth';
 import { showToast } from '../components/Toast';
+import Fontisto from '@expo/vector-icons/Fontisto';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import Feather from '@expo/vector-icons/Feather';
+
 
 export default function CadastroScreen({ navigation }) {
   const { colors, isDark, toggleTheme } = useTheme();
@@ -62,7 +66,7 @@ export default function CadastroScreen({ navigation }) {
             <Text style={{ color: colors.primary, fontSize: 16 }}>Voltar</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={toggleTheme}>
-            <Text style={{ fontSize: 20 }}>{isDark ? '☀️' : '🌙'}</Text>
+            <Text style={{ fontSize: 20 }}>{isDark ? <Fontisto name="day-sunny" size={24} color="white" />: <Ionicons name="moon-outline" size={24} color="black" />}</Text>
           </TouchableOpacity>
         </View>
 
@@ -74,13 +78,13 @@ export default function CadastroScreen({ navigation }) {
               resizeMode="contain"
             />
           </View>
-          <Text style={[styles.formTitle, { color: colors.textPrimary }]}>Criar conta</Text>
+          <Text style={[styles.formTitle ]}>Aprender ficou mais fácil</Text>
 
           <View style={styles.inputGroup}>
-            <Text style={[styles.label, { color: colors.textGray }]}>Nome de usuário</Text>
+            <Text style={[styles.label, { color: colors.textPrimary }]}>Nome de usuário</Text>
             <TextInput
-              style={[styles.input, { backgroundColor: colors.input, color: colors.textPrimary, borderColor: colors.borderColor }]}
-              placeholder="Seu nome de usuário"
+              style={[styles.input, { backgroundColor: colors.input, borderColor: colors.borderColor }]}
+              placeholder="Como podemos te chamar?"
               placeholderTextColor={colors.placeholder}
               value={username}
               onChangeText={setUsername}
@@ -88,10 +92,10 @@ export default function CadastroScreen({ navigation }) {
           </View>
 
           <View style={styles.inputGroup}>
-            <Text style={[styles.label, { color: colors.textGray }]}>Email institucional</Text>
+            <Text style={[styles.label, { color: colors.textPrimary }]}>E-mail institucional</Text>
             <TextInput
-              style={[styles.input, { backgroundColor: colors.input, color: colors.textPrimary, borderColor: colors.borderColor }]}
-              placeholder="@cps.sp.gov.br ou @aluno.cps.sp.gov.br"
+              style={[styles.input, { backgroundColor: colors.input, borderColor: colors.borderColor }]}
+              placeholder="Digite seu e-mail institucional"
               placeholderTextColor={colors.placeholder}
               value={email}
               onChangeText={setEmail}
@@ -101,7 +105,7 @@ export default function CadastroScreen({ navigation }) {
           </View>
 
           <View style={styles.inputGroup}>
-            <Text style={[styles.label, { color: colors.textGray }]}>Senha</Text>
+            <Text style={[styles.label, { color: colors.textPrimary }]}>Senha</Text>
             <View style={[styles.passwordContainer, { backgroundColor: colors.input, borderColor: colors.borderColor }]}>
               <TextInput
                 style={[styles.passwordInput, { color: colors.textPrimary }]}
@@ -112,7 +116,7 @@ export default function CadastroScreen({ navigation }) {
                 onChangeText={setSenha}
               />
               <TouchableOpacity onPress={() => setShowSenha(!showSenha)} style={styles.eyeBtn}>
-                <Text>{showSenha ? '🙈' : '👁️'}</Text>
+                <Text>{showSenha ? <Ionicons name="eye-outline" size={18} color={colors.textGray} /> : <Ionicons name="eye-off-outline" size={18} color={colors.textGray} />}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -121,7 +125,7 @@ export default function CadastroScreen({ navigation }) {
             <View style={styles.criteriaList}>
               {criteria.map((c, i) => (
                 <View key={i} style={styles.criteriaItem}>
-                  <Text>{c.check ? '✅' : '⬜'}</Text>
+                  <Text>{c.check ? <Feather name="check-square" size={15} color="white" /> : <Feather name="square" size={15} color="white" />}</Text>
                   <Text style={[styles.criteriaText, { color: colors.textGray }]}>{c.label}</Text>
                 </View>
               ))}
@@ -129,18 +133,18 @@ export default function CadastroScreen({ navigation }) {
           )}
 
           <View style={styles.inputGroup}>
-            <Text style={[styles.label, { color: colors.textGray }]}>Confirmar senha</Text>
+            <Text style={[styles.label, { color: colors.textPrimary }]}>Confirmar senha</Text>
             <View style={[styles.passwordContainer, { backgroundColor: colors.input, borderColor: colors.borderColor }]}>
               <TextInput
                 style={[styles.passwordInput, { color: colors.textPrimary }]}
-                placeholder="Repita a senha"
+                placeholder="confirme sua senha"
                 placeholderTextColor={colors.placeholder}
                 secureTextEntry={!showConfirm}
                 value={confirmSenha}
                 onChangeText={setConfirmSenha}
               />
               <TouchableOpacity onPress={() => setShowConfirm(!showConfirm)} style={styles.eyeBtn}>
-                <Text>{showConfirm ? '🙈' : '👁️'}</Text>
+                <Text>{showConfirm ? <Ionicons name="eye-outline" size={18} color={colors.textGray} /> : <Ionicons name="eye-off-outline" size={18} color={colors.textGray} />}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -151,7 +155,7 @@ export default function CadastroScreen({ navigation }) {
             disabled={loading}
           >
             <Text style={styles.submitBtnText}>
-              {loading ? 'Cadastrando...' : 'Cadastrar'}
+              {loading ? 'Cadastrando...' : 'Cadastrar →'}
             </Text>
           </TouchableOpacity>
         </View>
@@ -161,7 +165,7 @@ export default function CadastroScreen({ navigation }) {
           onPress={() => navigation.navigate('Inicio')}
         >
           <Text style={{ color: colors.textGray, textAlign: 'center' }}>
-            Já tem conta? <Text style={{ color: colors.primary, fontWeight: 'bold' }}>Entrar</Text>
+            Já possui conta? <Text style={{ color: colors.tertiary, fontWeight: 'bold' }}>Entre aqui</Text>
           </Text>
         </TouchableOpacity>
       </ScrollView>
@@ -175,7 +179,7 @@ const styles = StyleSheet.create({
   logoSection: { alignItems: 'center', marginBottom: 10 },
   logo: { width: 150, height: 50 },
   formCard: { padding: 24, borderRadius: 16, elevation: 4 },
-  formTitle: { fontSize: 22, fontWeight: 'bold', marginBottom: 20 },
+  formTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 20, color: '#B9B5B5', alignContent: 'center', textAlign: 'center' },
   inputGroup: { marginBottom: 16 },
   label: { fontSize: 13, marginBottom: 6, fontWeight: '500' },
   input: { padding: 14, borderRadius: 10, fontSize: 15, borderWidth: 1 },

@@ -25,7 +25,7 @@ export const lightColors = {
 
 export const darkColors = {
   background: '#0d0d0d',
-  primary: '#4ECDC4',
+  primary: '#419c96',
   secondary: '#359e97',
   tertiary: '#45b86e',
   success: '#4CAF50',
