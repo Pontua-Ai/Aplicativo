@@ -6,6 +6,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import supabaseClient from '../config/supabase';
 import { getImage } from '../config/images';
 import { showToast } from '../components/Toast';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function ConteudoScreen({ navigation, route }) {
   const { colors } = useTheme();
@@ -44,7 +45,7 @@ export default function ConteudoScreen({ navigation, route }) {
         </View>
 
         <View style={[styles.searchBar, { backgroundColor: colors.input, borderColor: colors.borderColor }]}>
-          <Text style={{ fontSize: 16 }}>🔍</Text>
+          <Ionicons name="search" size={18} color={colors.textPrimary} />
           <TextInput
             style={[styles.searchInput, { color: colors.textPrimary }]}
             placeholder="Pesquisar conteúdo..."
@@ -54,7 +55,7 @@ export default function ConteudoScreen({ navigation, route }) {
           />
           {search.length > 0 && (
             <TouchableOpacity onPress={() => setSearch('')}>
-              <Text style={{ color: colors.textGray, fontSize: 18 }}>✕</Text>
+              <Ionicons name="close" size={18} color={colors.textGray} />
             </TouchableOpacity>
           )}
         </View>

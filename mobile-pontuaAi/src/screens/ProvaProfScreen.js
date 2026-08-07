@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
 import supabaseClient from '../config/supabase';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function ProvaProfScreen({ navigation }) {
   const { colors } = useTheme();
@@ -80,7 +81,7 @@ export default function ProvaProfScreen({ navigation }) {
             onPress={() => toggleSelect(p.id_pergunta || p.id)}
           >
             <View style={styles.checkbox}>
-              {selected[p.id_pergunta || p.id] && <Text style={{ color: colors.primary }}>✓</Text>}
+              {selected[p.id_pergunta || p.id] && <Ionicons name="checkmark" size={16} color={colors.primary} />}
             </View>
             <View style={{ flex: 1 }}>
               <Text style={[styles.perguntaText, { color: colors.textPrimary }]} numberOfLines={2}>

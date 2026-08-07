@@ -6,6 +6,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useAuth } from '../contexts/AuthContext';
 import { OPENROUTER_API_KEY } from '../config/constants';
 import { showToast } from '../components/Toast';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const VESTIBULAR_TYPES = ['ENEM', 'VUNESP', 'FUVEST', 'UNICAMP', 'ITA/IME'];
 
@@ -98,7 +99,7 @@ export default function RedacaoScreen({ navigation }) {
         />
 
         <Text style={[styles.charCount, { color: colors.textGray }]}>
-          {texto.length} caracteres {texto.length < 500 ? `(faltam ${500 - texto.length})` : '✓'}
+          {texto.length} caracteres {texto.length < 500 ? `(faltam ${500 - texto.length})` : <MaterialCommunityIcons name="check" size={14} color={colors.textGray} />}
         </Text>
 
         <TouchableOpacity

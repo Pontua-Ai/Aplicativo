@@ -5,6 +5,7 @@ import {
 import { useTheme } from '../contexts/ThemeContext';
 import { validarSenha } from '../services/auth';
 import { showToast } from '../components/Toast';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function RedefinirScreen({ navigation, route }) {
   const { colors } = useTheme();
@@ -71,7 +72,7 @@ export default function RedefinirScreen({ navigation, route }) {
               onChangeText={setSenha}
             />
             <TouchableOpacity onPress={() => setShowSenha(!showSenha)} style={{ padding: 12 }}>
-              <Text>{showSenha ? '🙈' : '👁️'}</Text>
+              <Ionicons name={showSenha ? 'eye-off' : 'eye'} size={22} color={colors.textPrimary} />
             </TouchableOpacity>
           </View>
         </View>
@@ -80,7 +81,7 @@ export default function RedefinirScreen({ navigation, route }) {
           <View style={styles.criteriaList}>
             {criteria.map((c, i) => (
               <View key={i} style={styles.criteriaItem}>
-                <Text>{c.check ? '✅' : '⬜'}</Text>
+                <Ionicons name={c.check ? 'checkmark-circle' : 'square-outline'} size={18} color={c.check ? colors.success : colors.textGray} />
                 <Text style={[styles.criteriaText, { color: colors.textGray }]}>{c.label}</Text>
               </View>
             ))}
@@ -99,7 +100,7 @@ export default function RedefinirScreen({ navigation, route }) {
               onChangeText={setConfirmSenha}
             />
             <TouchableOpacity onPress={() => setShowConfirm(!showConfirm)} style={{ padding: 12 }}>
-              <Text>{showConfirm ? '🙈' : '👁️'}</Text>
+              <Ionicons name={showConfirm ? 'eye-off' : 'eye'} size={22} color={colors.textPrimary} />
             </TouchableOpacity>
           </View>
         </View>

@@ -4,6 +4,8 @@ import {
 } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
 import supabaseClient from '../config/supabase';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function PerguntasScreen({ navigation, route }) {
   const { colors } = useTheme();
@@ -57,9 +59,9 @@ export default function PerguntasScreen({ navigation, route }) {
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.infoRow}>
           <View style={[styles.cronometro, { backgroundColor: colors.cardBg, borderColor: colors.borderColor }]}>
-            <Text style={{ color: colors.textGray }}>⏱️ 00:00</Text>
+            <Text style={{ color: colors.textGray }}><MaterialCommunityIcons name="timer-outline" size={16} color={colors.textGray} /> 00:00</Text>
           </View>
-          <Text style={[styles.pontos, { color: colors.primary }]}>⭐ {pontos}</Text>
+          <Text style={[styles.pontos, { color: colors.primary }]}><Ionicons name="star" size={14} color={colors.starColor} /> {pontos}</Text>
         </View>
 
         {loading ? (

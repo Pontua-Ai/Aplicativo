@@ -1,30 +1,31 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const INFO_CARDS = [
   {
-    icon: '🤖',
+    icon: <MaterialCommunityIcons name="robot-outline" size={36} color="black" />,
     title: 'Assistente Inteligente',
     desc: 'A inteligência artificial do PontuaAI foi treinada para auxiliar na criação de conteúdo educacional de qualidade. Basta acessar a página "Perguntas" no menu superior e digitar o tema ou assunto que deseja trabalhar.',
   },
   {
-    icon: '📝',
+    icon: <MaterialCommunityIcons name="note-text-outline" size={36} color="black" />,
     title: 'Criação de Provas',
     desc: 'Crie provas personalizadas selecionando perguntas do banco de questões. Você pode filtrar por matéria e conteúdo, escolher as questões desejadas e gerar uma prova completa para seus alunos.',
   },
   {
-    icon: '📊',
+    icon: <MaterialCommunityIcons name="chart-bar" size={36} color="black" />,
     title: 'Acompanhamento',
     desc: 'Acompanhe o progresso dos seus alunos através do histórico de atividades. Veja quais questões foram respondidas, o desempenho da turma e identifique pontos que precisam de mais atenção.',
   },
   {
-    icon: '💡',
+    icon: <MaterialCommunityIcons name="lightbulb-on-outline" size={36} color="black" />,
     title: 'Tire Dúvidas',
     desc: 'O PontuaAI não serve apenas para gerar perguntas — você pode usar a assistente para tirar dúvidas sobre qualquer conteúdo. É como ter um tutor disponível 24 horas por dia, 7 dias por semana.',
   },
   {
-    icon: '🔧',
+    icon: <MaterialCommunityIcons name="tools" size={36} color="black" />,
     title: 'Gestão da Conta',
     desc: 'Na página "Conta" você pode alterar sua senha, alternar entre modo claro e escuro, gerenciar sua conta e muito mais.',
   },

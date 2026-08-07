@@ -5,11 +5,12 @@ import {
 import { useTheme } from '../contexts/ThemeContext';
 import { getImage } from '../config/images';
 import { SUBJECTS } from '../config/constants';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const PROVA_TYPES = [
-  { title: 'Prova por matéria', desc: '10 questões por matéria', icon: '📚', type: 'materia' },
-  { title: 'Prova Geral', desc: '20 questões de todas as matérias', icon: '📋', type: 'geral' },
-  { title: 'Simulado ENEM', desc: '60 questões, 5 horas de duração', icon: '🎯', type: 'enem' },
+  { title: 'Prova por matéria', desc: '10 questões por matéria', icon: <MaterialCommunityIcons name="book-open-variant" size={32} color="black" />, type: 'materia' },
+  { title: 'Prova Geral', desc: '20 questões de todas as matérias', icon: <MaterialCommunityIcons name="clipboard-text-outline" size={32} color="black" />, type: 'geral' },
+  { title: 'Simulado ENEM', desc: '60 questões, 5 horas de duração', icon: <MaterialCommunityIcons name="target" size={32} color="black" />, type: 'enem' },
 ];
 
 export default function ProvaScreen({ navigation }) {

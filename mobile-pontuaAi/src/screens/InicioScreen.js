@@ -7,6 +7,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useAuth } from '../contexts/AuthContext';
 import { loginUsuario } from '../services/auth';
 import { showToast } from '../components/Toast';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function InicioScreen({ navigation }) {
   const { colors, isDark, toggleTheme } = useTheme();
@@ -45,7 +46,7 @@ export default function InicioScreen({ navigation }) {
       <ScrollView contentContainerStyle={styles.container}>
         <View style={[styles.header, { borderBottomColor: colors.borderColor }]}>
           <TouchableOpacity onPress={toggleTheme}>
-            <Text style={{ fontSize: 20 }}>{isDark ? '☀️' : '🌙'}</Text>
+            <Text style={{ fontSize: 20 }}>{isDark ? <Ionicons name="sunny-outline" size={24} color="white" /> : <Ionicons name="moon-outline" size={24} color="black" />}</Text>
           </TouchableOpacity>
         </View>
 
@@ -88,7 +89,7 @@ export default function InicioScreen({ navigation }) {
                 onChangeText={setSenha}
               />
               <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={styles.eyeBtn}>
-                <Text>{showPassword ? '🙈' : '👁️'}</Text>
+                <Ionicons name={showPassword ? 'eye-off' : 'eye'} size={22} color={colors.textPrimary} />
               </TouchableOpacity>
             </View>
           </View>

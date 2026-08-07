@@ -7,6 +7,8 @@ import { useAuth } from '../contexts/AuthContext';
 import { verificarSenha, excluirConta } from '../services/auth';
 import supabaseClient from '../config/supabase';
 import { showToast } from '../components/Toast';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function ContaProfScreen({ navigation }) {
   const { colors, isDark, toggleTheme } = useTheme();
@@ -42,10 +44,10 @@ export default function ContaProfScreen({ navigation }) {
   }
 
   const settings = [
-    { icon: '🔑', label: 'Alterar senha', onPress: () => navigation.navigate('Redefinir') },
-    { icon: isDark ? '☀️' : '🌙', label: isDark ? 'Modo claro' : 'Modo escuro', onPress: toggleTheme },
-    { icon: '🚪', label: 'Sair', onPress: handleSair },
-    { icon: '🗑️', label: 'Excluir conta', onPress: () => { setShowDeleteModal(true); setDeleteStep(false); }, danger: true },
+    { icon: <MaterialCommunityIcons name="key-outline" size={20} color={colors.textPrimary} />, label: 'Alterar senha', onPress: () => navigation.navigate('Redefinir') },
+    { icon: isDark ? <Ionicons name="sunny" size={20} color={colors.textPrimary} /> : <Ionicons name="moon" size={20} color={colors.textPrimary} />, label: isDark ? 'Modo claro' : 'Modo escuro', onPress: toggleTheme },
+    { icon: <MaterialCommunityIcons name="door" size={20} color={colors.textPrimary} />, label: 'Sair', onPress: handleSair },
+    { icon: <MaterialCommunityIcons name="trash-can-outline" size={20} color={colors.error} />, label: 'Excluir conta', onPress: () => { setShowDeleteModal(true); setDeleteStep(false); }, danger: true },
   ];
 
   return (
@@ -56,7 +58,7 @@ export default function ContaProfScreen({ navigation }) {
           <View style={styles.avatarContainer}>
             <Image source={require('../../assets/avatar-padrao.png')} style={styles.avatar} />
             <View style={[styles.cameraOverlay, { backgroundColor: colors.overlay }]}>
-              <Text style={{ color: '#fff', fontSize: 16 }}>📷</Text>
+              <MaterialCommunityIcons name="camera-outline" size={16} color="#fff" />
             </View>
           </View>
           <Text style={[styles.profileName, { color: colors.textPrimary }]}>

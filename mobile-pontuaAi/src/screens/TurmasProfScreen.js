@@ -5,6 +5,8 @@ import {
 import { useTheme } from '../contexts/ThemeContext';
 import supabaseClient from '../config/supabase';
 import { showToast } from '../components/Toast';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function TurmasProfScreen({ navigation }) {
   const { colors } = useTheme();
@@ -49,7 +51,7 @@ export default function TurmasProfScreen({ navigation }) {
 
         {turmas.length === 0 ? (
           <View style={{ marginTop: 60, alignItems: 'center' }}>
-            <Text style={{ fontSize: 48, marginBottom: 16 }}>🏫</Text>
+            <MaterialCommunityIcons name="school-outline" size={48} color={colors.textGray} />
             <Text style={[styles.emptyText, { color: colors.textGray }]}>
               Nenhuma turma criada ainda.
             </Text>
@@ -85,7 +87,7 @@ export default function TurmasProfScreen({ navigation }) {
             <View style={[styles.codeRow, { backgroundColor: colors.input, borderColor: colors.borderColor }]}>
               <Text style={[styles.codeText, { color: colors.primary }]}>{codigoAcesso}</Text>
               <TouchableOpacity onPress={generateCode}>
-                <Text style={{ color: colors.textGray }}>🔄</Text>
+                <Ionicons name="refresh" size={22} color={colors.textGray} />
               </TouchableOpacity>
             </View>
 

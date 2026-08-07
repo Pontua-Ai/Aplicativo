@@ -3,6 +3,7 @@ import {
   View, Text, ScrollView, StyleSheet, TouchableOpacity, TextInput, Image
 } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const MOCK_HISTORICO = [
   { id: 1, title: 'Redação ENEM 2024', type: 'Redação', date: '15/03/2024', points: 920, desc: 'Redação sobre educação no Brasil' },
@@ -60,10 +61,10 @@ export default function HistoricoScreen({ navigation }) {
             </View>
             <Text style={[styles.cardDesc, { color: colors.textGray }]}>{h.desc}</Text>
             <View style={styles.cardFooter}>
-              <Text style={[styles.cardPoints, { color: colors.primary }]}>⭐ {h.points} pts</Text>
+              <Text style={[styles.cardPoints, { color: colors.primary }]}><Ionicons name="star" size={14} color={colors.starColor} /> {h.points} pts</Text>
               <View style={styles.cardActions}>
-                <TouchableOpacity style={styles.actionBtn}><Text style={{ color: colors.textGray }}>👁️</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.actionBtn}><Text style={{ color: colors.textGray }}>✏️</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.actionBtn}><Ionicons name="eye-outline" size={18} color={colors.textGray} /></TouchableOpacity>
+                <TouchableOpacity style={styles.actionBtn}><Ionicons name="pencil-outline" size={18} color={colors.textGray} /></TouchableOpacity>
               </View>
             </View>
           </View>

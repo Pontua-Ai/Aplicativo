@@ -6,6 +6,8 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useAuth } from '../contexts/AuthContext';
 import supabaseClient from '../config/supabase';
 import { showToast } from '../components/Toast';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function PerguntasProfScreen({ navigation }) {
   const { colors } = useTheme();
@@ -114,7 +116,7 @@ export default function PerguntasProfScreen({ navigation }) {
               onPress={() => setVisibilidade(v)}
             >
               <Text style={{ color: visibilidade === v ? '#fff' : colors.textGray, fontSize: 13 }}>
-                {v === 'publico' ? '🌍 Público' : '🔒 Privado'}
+                {v === 'publico' ? <><MaterialCommunityIcons name="earth" size={14} color={visibilidade === v ? '#fff' : colors.textGray} /> Público</> : <><MaterialCommunityIcons name="lock-outline" size={14} color={visibilidade === v ? '#fff' : colors.textGray} /> Privado</>}
               </Text>
             </TouchableOpacity>
           ))}
@@ -150,7 +152,7 @@ export default function PerguntasProfScreen({ navigation }) {
               style={[styles.radio, correta === i && { backgroundColor: colors.success }]}
               onPress={() => setCorreta(i)}
             >
-              {correta === i && <Text style={{ color: '#fff', fontSize: 12 }}>✓</Text>}
+              {correta === i && <Ionicons name="checkmark" size={14} color="#fff" />}
             </TouchableOpacity>
           </View>
         ))}
