@@ -5,14 +5,20 @@ import {
 } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
 import { useAuth } from '../contexts/AuthContext';
+import EvilIcons from '@expo/vector-icons/EvilIcons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
+import Octicons from '@expo/vector-icons/Octicons';
 
 const { width } = Dimensions.get('window');
 
 const features = [
-  { icon: '✍️', title: 'Envie sua redação', desc: 'Cole seu texto e envie para análise' },
-  { icon: '🧠', title: 'IA analisa', desc: 'O PONT avalia conforme 5 competências' },
-  { icon: '📊', title: 'Receba feedback', desc: 'Notas detalhadas e sugestões' },
-  { icon: '📈', title: 'Evolua sempre', desc: 'Acompanhe seu progresso' },
+  { icon: <EvilIcons name="pencil" size={50} color="black" />, title: 'Envie sua redação', desc: 'Cole seu texto e envie para análise' },
+  { icon: <MaterialCommunityIcons name="brain" size={50} color="black" />, title: 'IA analisa', desc: 'O PONT avalia conforme 5 competências' },
+  { icon: <MaterialCommunityIcons name="google-spreadsheet" size={50} color="black" />, title: 'Receba feedback', desc: 'Notas detalhadas e sugestões' },
+  { icon: <AntDesign name="area-chart" size={50} color="black" />, title: 'Evolua sempre', desc: 'Acompanhe seu progresso' },
 ];
 
 export default function SobreScreen({ navigation }) {
@@ -47,7 +53,7 @@ export default function SobreScreen({ navigation }) {
           <Text style={[styles.headerBtnActive, { color: colors.primary }]}>Sobre</Text>
         </View>
         <TouchableOpacity onPress={toggleTheme} style={styles.themeBtn}>
-          <Text style={{ fontSize: 18 }}>{isDark ? '☀️' : '🌙'}</Text>
+          <Text style={{ fontSize: 18 }}>{isDark ? <Ionicons name="sunny-outline" size={24} color="white" /> : <Ionicons name="moon-outline" size={24} color="black" />}</Text>
         </TouchableOpacity>
       </View>
 
@@ -148,9 +154,9 @@ export default function SobreScreen({ navigation }) {
         </Text>
         <View style={styles.objectivesGrid}>
           {[
-            { icon: '🎓', title: 'Ampliar o acesso ao ensino de qualidade', desc: 'Democratizar o acesso a ferramentas de correção de redações com IA.' },
-            { icon: '👥', title: 'Ajudar estudantes em sua jornada', desc: 'Acompanhar cada etapa do aprendizado com métricas claras e relatórios personalizados.' },
-            { icon: '⚖️', title: 'Uniformizar a qualidade do ensino', desc: 'Oferecer critérios de avaliação padronizados com base nas competências exigidas.' },
+            { icon: <SimpleLineIcons name="graduation" size={40} color="black" />, title: 'Ampliar o acesso ao ensino de qualidade', desc: 'Democratizar o acesso a ferramentas de correção de redações com IA.' },
+            { icon: <Ionicons name="person-outline" size={40} color="black" />, title: 'Ajudar estudantes em sua jornada', desc: 'Acompanhar cada etapa do aprendizado com métricas claras e relatórios personalizados.' },
+            { icon: <Octicons name="law" size={40} color="black" />, title: 'Uniformizar a qualidade do ensino', desc: 'Oferecer critérios de avaliação padronizados com base nas competências exigidas.' },
           ].map((obj, i) => (
             <View key={i} style={[styles.objectiveCard, { backgroundColor: colors.cardBg, borderColor: colors.borderColor }]}>
               <Text style={{ fontSize: 32, marginBottom: 10 }}>{obj.icon}</Text>
