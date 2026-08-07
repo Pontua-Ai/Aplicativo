@@ -58,7 +58,7 @@ export default function RedefinirScreen({ navigation, route }) {
     <ScrollView contentContainerStyle={[styles.container, { backgroundColor: colors.background }]}>
       <Image source={require('../../assets/logo-completa.png')} style={styles.logo} resizeMode="contain" />
       <View style={[styles.card, { backgroundColor: colors.cardBg }]}>
-        <Text style={[styles.title, { color: colors.textPrimary }]}>Redefinir senha</Text>
+        <Text style={[styles.title, { color: colors.primary }]}>Redefinir senha</Text>
 
         <View style={styles.inputGroup}>
           <Text style={[styles.label, { color: colors.textGray }]}>Nova senha</Text>

@@ -44,7 +44,7 @@ export default function ProvaProfScreen({ navigation }) {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <TeacherHeader navigation={navigation} colors={colors} />
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={[styles.title, { color: colors.textPrimary }]}>Criar Prova</Text>
+        <Text style={[styles.title, { color: colors.primary }]}>Criar Prova</Text>
 
         <View style={styles.filters}>
           <TouchableOpacity style={[styles.filterBtn, { backgroundColor: colors.input, borderColor: colors.borderColor }]}>

@@ -12,7 +12,7 @@ export default function CallbackScreen({ navigation, route }) {
       <View style={[styles.card, { backgroundColor: colors.cardBg }]}>
         <Image source={require('../../assets/logo-completa.png')} style={styles.logo} resizeMode="contain" />
         <Text style={{ fontSize: 40, textAlign: 'center', marginBottom: 10 }}><Fontisto name="email" size={40} color={colors.textGray} /></Text>
-        <Text style={[styles.title, { color: colors.textPrimary }]}>Verifique seu email</Text>
+        <Text style={[styles.title, { color: colors.primary }]}>Verifique seu email</Text>
         <Text style={[styles.desc, { color: colors.textGray }]}>
           Enviamos um link de confirmação para:
         </Text>

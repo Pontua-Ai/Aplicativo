@@ -21,7 +21,6 @@ export default function MateriasScreen({ navigation }) {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <StudentHeader navigation={navigation} user={user} colors={colors} />
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={[styles.title, { color: colors.textPrimary }]}>Matérias</Text>
         <View style={styles.grid}>
           {visible.map((m) => (
             <TouchableOpacity
@@ -81,7 +80,7 @@ function StudentHeader({ navigation, user, colors }) {
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ flex: 1 }}>
         {tabs.map((tab) => (
           <TouchableOpacity key={tab.name} style={styles.headerTab} onPress={() => navigation.navigate(tab.screen)}>
-            <Text style={{ color: colors.textGray, fontSize: 13 }}>{tab.name}</Text>
+            <Text style={{ color: tab.name === 'Matérias' ? colors.primary : colors.textGray, fontSize: 13, fontWeight: tab.name === 'Matérias' ? 'bold' : 'normal' }}>{tab.name}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>

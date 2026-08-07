@@ -12,7 +12,7 @@ export default function HistoricoProfScreen({ navigation }) {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <TeacherHeader navigation={navigation} colors={colors} />
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={[styles.title, { color: colors.textPrimary }]}>Histórico</Text>
+        <Text style={[styles.title, { color: colors.primary }]}>Histórico</Text>
 
         <TextInput
           style={[styles.searchInput, { backgroundColor: colors.input, color: colors.textPrimary, borderColor: colors.borderColor }]}

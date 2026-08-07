@@ -20,7 +20,7 @@ export default function ProvaScreen({ navigation }) {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <StudentHeader navigation={navigation} colors={colors} />
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={[styles.title, { color: colors.textPrimary }]}>Prova</Text>
+        <Text style={[styles.title, { color: colors.primary }]}>Prova</Text>
         <Text style={[styles.desc, { color: colors.textGray }]}>
           Escolha o tipo de prova que deseja fazer:
         </Text>

@@ -30,7 +30,7 @@ export default function RecuperarScreen({ navigation }) {
       />
 
       <View style={[styles.card, { backgroundColor: colors.cardBg }]}>
-        <Text style={[styles.title, { color: colors.textPrimary }]}>Recuperar senha</Text>
+        <Text style={[styles.title, { color: colors.primary }]}>Recuperar senha</Text>
         <Text style={[styles.desc, { color: colors.textGray }]}>
           Digite seu email para receber um link de recuperação.
         </Text>

@@ -91,7 +91,7 @@ export default function PerguntasProfScreen({ navigation }) {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <TeacherHeader navigation={navigation} colors={colors} />
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={[styles.title, { color: colors.textPrimary }]}>Criar Pergunta</Text>
+        <Text style={[styles.title, { color: colors.primary }]}>Criar Pergunta</Text>
 
         <View style={styles.row}>
           <TouchableOpacity

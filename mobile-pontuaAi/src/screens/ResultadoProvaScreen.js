@@ -11,7 +11,7 @@ export default function ResultadoProvaScreen({ navigation, route }) {
       <StudentHeader navigation={navigation} colors={colors} />
       <ScrollView contentContainerStyle={styles.content}>
         <View style={[styles.resultCard, { backgroundColor: colors.cardBg }]}>
-          <Text style={[styles.title, { color: colors.textPrimary }]}>Resultado</Text>
+          <Text style={[styles.title, { color: colors.primary }]}>Resultado</Text>
           <View style={styles.scoreContainer}>
             <Text style={[styles.score, { color: colors.primary }]}>
               {result?.acertos || 0}/{result?.total || 0}

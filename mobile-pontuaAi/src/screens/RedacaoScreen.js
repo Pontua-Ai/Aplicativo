@@ -60,7 +60,7 @@ export default function RedacaoScreen({ navigation }) {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <StudentHeader navigation={navigation} colors={colors} />
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={[styles.title, { color: colors.textPrimary }]}>Redação</Text>
+        <Text style={[styles.title, { color: colors.primary }]}>Redação</Text>
 
         <View style={[styles.infoCard, { backgroundColor: colors.cardBg, borderColor: colors.borderColor }]}>
           <Text style={[styles.infoText, { color: colors.textGray }]}>

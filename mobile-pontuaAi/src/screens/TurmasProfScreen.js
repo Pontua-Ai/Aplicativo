@@ -40,7 +40,7 @@ export default function TurmasProfScreen({ navigation }) {
       <TeacherHeader navigation={navigation} colors={colors} />
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.headerRow}>
-          <Text style={[styles.title, { color: colors.textPrimary }]}>Gerenciar Turmas</Text>
+          <Text style={[styles.title, { color: colors.primary }]}>Gerenciar Turmas</Text>
           <TouchableOpacity
             style={[styles.newBtn, { backgroundColor: colors.primary }]}
             onPress={() => { setShowModal(true); generateCode(); }}

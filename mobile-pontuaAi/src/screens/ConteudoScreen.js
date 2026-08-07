@@ -30,7 +30,7 @@ export default function ConteudoScreen({ navigation, route }) {
   }
 
   const filtered = conteudos.filter(c =>
-    c.titulo?.toLowerCase().includes(search.toLowerCase())
+    c.nome_conteudo?.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -39,7 +39,7 @@ export default function ConteudoScreen({ navigation, route }) {
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.titleRow}>
           {materia && <Image source={getImage(materia.icon)} style={styles.materiaIcon} resizeMode="contain" />}
-          <Text style={[styles.title, { color: colors.textPrimary }]}>
+          <Text style={[styles.title, { color: colors.primary }]}>
             {materia?.name || 'Conteúdos'}
           </Text>
         </View>
@@ -74,10 +74,7 @@ export default function ConteudoScreen({ navigation, route }) {
                 style={[styles.conteudoCard, { backgroundColor: colors.cardBg, borderColor: colors.borderColor }]}
                 onPress={() => navigation.navigate('Perguntas', { conteudo: c, materia })}
               >
-                <Text style={[styles.conteudoTitle, { color: colors.textPrimary }]}>{c.titulo}</Text>
-                <Text style={{ color: colors.textGray, fontSize: 12, marginTop: 4 }}>
-                  {c.descricao || ''}
-                </Text>
+                <Text style={[styles.conteudoTitle, { color: colors.textPrimary }]}>{c.nome_conteudo}</Text>
               </TouchableOpacity>
             ))}
           </View>
