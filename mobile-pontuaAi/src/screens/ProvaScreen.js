@@ -6,6 +6,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { getImage } from '../config/images';
 import { SUBJECTS } from '../config/constants';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import StudentHeader from '../components/StudentHeader';
 
 const PROVA_TYPES = [
   { title: 'Prova por matéria', desc: '10 questões por matéria', icon: <MaterialCommunityIcons name="book-open-variant" size={32} color="black" />, type: 'materia' },
@@ -18,7 +19,7 @@ export default function ProvaScreen({ navigation }) {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <StudentHeader navigation={navigation} colors={colors} />
+      <StudentHeader navigation={navigation} />
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={[styles.title, { color: colors.primary }]}>Prova</Text>
         <Text style={[styles.desc, { color: colors.textGray }]}>
@@ -57,27 +58,8 @@ export default function ProvaScreen({ navigation }) {
   );
 }
 
-function StudentHeader({ navigation, colors }) {
-  const tabs = ['Matérias', 'Conteúdos', 'Prova', 'Redação', 'Histórico', 'Conta'];
-  return (
-    <View style={[styles.header, { backgroundColor: colors.cardBg, borderBottomColor: colors.borderColor }]}>
-      <Image source={require('../../assets/cabeca-header.png')} style={styles.headerLogo} resizeMode="contain" />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {tabs.map((tab) => (
-          <TouchableOpacity key={tab} style={styles.headerTab}>
-            <Text style={{ color: colors.textGray, fontSize: 13 }}>{tab}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  header: { flexDirection: 'row', alignItems: 'center', padding: 12, borderBottomWidth: 1 },
-  headerLogo: { width: 30, height: 30, marginRight: 8 },
-  headerTab: { paddingHorizontal: 10, paddingVertical: 6 },
   content: { padding: 16 },
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 8 },
   desc: { fontSize: 14, marginBottom: 20 },

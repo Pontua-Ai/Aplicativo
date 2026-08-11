@@ -5,28 +5,39 @@ import {
 import { useTheme } from '../contexts/ThemeContext';
 import supabaseClient from '../config/supabase';
 import { getImage } from '../config/images';
-import { showToast } from '../components/Toast';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import StudentHeader from '../components/StudentHeader';
 
 export default function ConteudoScreen({ navigation, route }) {
   const { colors } = useTheme();
   const materia = route?.params?.materia;
   const [search, setSearch] = useState('');
   const [conteudos, setConteudos] = useState([]);
+  const [materias, setMaterias] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    loadMaterias();
     loadConteudos();
-  }, []);
+  }, [materia?.id]);
+
+  async function loadMaterias() {
+    const { data } = await supabaseClient.from('materia').select('*');
+    if (data) setMaterias(data);
+  }
 
   async function loadConteudos() {
     setLoading(true);
-    const { data, error } = await supabaseClient
-      .from('conteudo')
-      .select('*')
-      .eq('id_materia', materia?.id);
+    let query = supabaseClient.from('conteudo').select('*');
+    if (materia?.id) query = query.eq('id_materia', materia.id);
+    const { data } = await query;
     if (data) setConteudos(data);
     setLoading(false);
+  }
+
+  function materiaNome(id) {
+    const m = materias.find((m) => (m.id_materia || m.id) == id);
+    return m?.nome_materia || m?.name || '';
   }
 
   const filtered = conteudos.filter(c =>
@@ -35,7 +46,7 @@ export default function ConteudoScreen({ navigation, route }) {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <StudentHeader navigation={navigation} colors={colors} />
+      <StudentHeader navigation={navigation} />
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.titleRow}>
           {materia && <Image source={getImage(materia.icon)} style={styles.materiaIcon} resizeMode="contain" />}
@@ -75,6 +86,11 @@ export default function ConteudoScreen({ navigation, route }) {
                 onPress={() => navigation.navigate('Perguntas', { conteudo: c, materia })}
               >
                 <Text style={[styles.conteudoTitle, { color: colors.textPrimary }]}>{c.nome_conteudo}</Text>
+                {!materia && (
+                  <Text style={[styles.conteudoSubtitle, { color: colors.textGray }]}>
+                    {materiaNome(c.id_materia)}
+                  </Text>
+                )}
               </TouchableOpacity>
             ))}
           </View>
@@ -84,27 +100,8 @@ export default function ConteudoScreen({ navigation, route }) {
   );
 }
 
-function StudentHeader({ navigation, colors }) {
-  const tabs = ['Matérias', 'Conteúdos', 'Prova', 'Redação', 'Histórico', 'Conta'];
-  return (
-    <View style={[styles.header, { backgroundColor: colors.cardBg, borderBottomColor: colors.borderColor }]}>
-      <Image source={require('../../assets/cabeca-header.png')} style={styles.headerLogo} resizeMode="contain" />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {tabs.map((tab) => (
-          <TouchableOpacity key={tab} style={styles.headerTab}>
-            <Text style={{ color: colors.textGray, fontSize: 13 }}>{tab}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  header: { flexDirection: 'row', alignItems: 'center', padding: 12, borderBottomWidth: 1 },
-  headerLogo: { width: 30, height: 30, marginRight: 8 },
-  headerTab: { paddingHorizontal: 10, paddingVertical: 6 },
   content: { padding: 16 },
   titleRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 20, gap: 12 },
   materiaIcon: { width: 40, height: 40 },
@@ -119,4 +116,5 @@ const styles = StyleSheet.create({
     padding: 16, borderRadius: 12, borderWidth: 1, elevation: 2,
   },
   conteudoTitle: { fontSize: 16, fontWeight: '600' },
+  conteudoSubtitle: { fontSize: 13, marginTop: 4 },
 });

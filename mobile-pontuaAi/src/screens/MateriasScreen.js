@@ -7,6 +7,7 @@ import { useAuth } from '../contexts/AuthContext';
 import supabaseClient from '../config/supabase';
 import { getImage } from '../config/images';
 import { SUBJECTS } from '../config/constants';
+import StudentHeader from '../components/StudentHeader';
 
 export default function MateriasScreen({ navigation }) {
   const { colors } = useTheme();
@@ -19,7 +20,7 @@ export default function MateriasScreen({ navigation }) {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <StudentHeader navigation={navigation} user={user} colors={colors} />
+      <StudentHeader navigation={navigation} />
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.grid}>
           {visible.map((m) => (
@@ -62,37 +63,8 @@ export default function MateriasScreen({ navigation }) {
   );
 }
 
-function StudentHeader({ navigation, user, colors }) {
-  function logout() {
-    navigation.reset({ index: 0, routes: [{ name: 'Inicio' }] });
-  }
-  const tabs = [
-    { name: 'Matérias', screen: 'Materias' },
-    { name: 'Conteúdos', screen: 'Materias' },
-    { name: 'Prova', screen: 'Prova' },
-    { name: 'Redação', screen: 'Redacao' },
-    { name: 'Histórico', screen: 'Historico' },
-    { name: 'Conta', screen: 'ContaAluno' },
-  ];
-  return (
-    <View style={[styles.header, { backgroundColor: colors.cardBg, borderBottomColor: colors.borderColor }]}>
-      <Image source={require('../../assets/cabeca-header.png')} style={styles.headerLogo} resizeMode="contain" />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ flex: 1 }}>
-        {tabs.map((tab) => (
-          <TouchableOpacity key={tab.name} style={styles.headerTab} onPress={() => navigation.navigate(tab.screen)}>
-            <Text style={{ color: tab.name === 'Matérias' ? colors.primary : colors.textGray, fontSize: 13, fontWeight: tab.name === 'Matérias' ? 'bold' : 'normal' }}>{tab.name}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  header: { flexDirection: 'row', alignItems: 'center', padding: 12, borderBottomWidth: 1 },
-  headerLogo: { width: 30, height: 30, marginRight: 8 },
-  headerTab: { paddingHorizontal: 10, paddingVertical: 6 },
   content: { padding: 16 },
   title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 12 },

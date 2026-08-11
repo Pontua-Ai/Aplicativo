@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import StudentHeader from '../components/StudentHeader';
 
 const MOCK_HISTORICO = [
   { id: 1, title: 'Redação ENEM 2024', type: 'Redação', date: '15/03/2024', points: 920, desc: 'Redação sobre educação no Brasil' },
@@ -24,7 +25,7 @@ export default function HistoricoScreen({ navigation }) {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <StudentHeader navigation={navigation} colors={colors} />
+      <StudentHeader navigation={navigation} />
       <ScrollView contentContainerStyle={styles.content}>
         <Text style={[styles.title, { color: colors.primary }]}>Histórico</Text>
 
@@ -74,27 +75,8 @@ export default function HistoricoScreen({ navigation }) {
   );
 }
 
-function StudentHeader({ navigation, colors }) {
-  const tabs = ['Matérias', 'Conteúdos', 'Prova', 'Redação', 'Histórico', 'Conta'];
-  return (
-    <View style={[styles.header, { backgroundColor: colors.cardBg, borderBottomColor: colors.borderColor }]}>
-      <Image source={require('../../assets/cabeca-header.png')} style={styles.headerLogo} resizeMode="contain" />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {tabs.map((tab) => (
-          <TouchableOpacity key={tab} style={styles.headerTab}>
-            <Text style={{ color: colors.textGray, fontSize: 13 }}>{tab}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  header: { flexDirection: 'row', alignItems: 'center', padding: 12, borderBottomWidth: 1 },
-  headerLogo: { width: 30, height: 30, marginRight: 8 },
-  headerTab: { paddingHorizontal: 10, paddingVertical: 6 },
   content: { padding: 16 },
   title: { fontSize: 22, fontWeight: 'bold', marginBottom: 16 },
   searchInput: { padding: 12, borderRadius: 10, borderWidth: 1, fontSize: 14, marginBottom: 12 },

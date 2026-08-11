@@ -6,6 +6,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import supabaseClient from '../config/supabase';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import StudentHeader from '../components/StudentHeader';
 
 export default function PerguntasScreen({ navigation, route }) {
   const { colors } = useTheme();
@@ -55,7 +56,7 @@ export default function PerguntasScreen({ navigation, route }) {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      <StudentHeader navigation={navigation} colors={colors} />
+      <StudentHeader navigation={navigation} />
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.infoRow}>
           <View style={[styles.cronometro, { backgroundColor: colors.cardBg, borderColor: colors.borderColor }]}>
@@ -125,27 +126,8 @@ export default function PerguntasScreen({ navigation, route }) {
   );
 }
 
-function StudentHeader({ navigation, colors }) {
-  const tabs = ['Matérias', 'Conteúdos', 'Prova', 'Redação', 'Histórico', 'Conta'];
-  return (
-    <View style={[styles.header, { backgroundColor: colors.cardBg, borderBottomColor: colors.borderColor }]}>
-      <Image source={require('../../assets/cabeca-header.png')} style={styles.headerLogo} resizeMode="contain" />
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        {tabs.map((tab) => (
-          <TouchableOpacity key={tab} style={styles.headerTab}>
-            <Text style={{ color: colors.textGray, fontSize: 13 }}>{tab}</Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  header: { flexDirection: 'row', alignItems: 'center', padding: 12, borderBottomWidth: 1 },
-  headerLogo: { width: 30, height: 30, marginRight: 8 },
-  headerTab: { paddingHorizontal: 10, paddingVertical: 6 },
   content: { padding: 16 },
   infoRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 },
   cronometro: { padding: 10, borderRadius: 8, borderWidth: 1 },
